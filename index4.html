@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharul | UMT Sciens Agrotecnology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset and Global Styles */
+        :root {
+            /* Scientific/Modern Color Palette */
+            --color-white: #ffffff;
+            --color-light-grey: #f0f4f8; /* Soft background */
+            --color-medium-grey: #e2e8f0; /* Card borders/dividers */
+            --color-dark-grey: #334155; /* Text/primary */
+            --color-accent: #004d99; /* Deep Ocean Blue */
+            --color-text-light: #64748b; /* Secondary text */
+            
+            /* Typography */
+            --font-primary: 'Inter', sans-serif;
+            --font-size-base: 16px;
+            
+            /* Spacing */
+            --spacing-unit: 1rem;
+            --border-radius-base: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-light-grey);
+            color: var(--color-dark-grey);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: var(--spacing-unit);
+        }
+
+        /* Container for the Grid */
+        .bento-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            gap: var(--spacing-unit);
+            padding: var(--spacing-unit);
+            
+            /* Base Mobile Layout: Stacked vertically (1 column) */
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+
+        /* Bento Card Styles */
+        .bento-card {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-base);
+            border: 1px solid var(--color-medium-grey);
+            padding: calc(var(--spacing-unit) * 1.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden; 
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s; 
+        }
+
+        /* Subtle Hover Effect (Scale up) */
+        .bento-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card Content Styling */
+        .card-header {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-unit);
+            color: var(--color-dark-grey);
+        }
+
+        .card-content {
+            font-size: 1rem;
+            color: var(--color-text-light);
+        }
+        
+        .card-content strong {
+            color: var(--color-dark-grey);
+            font-weight: 700;
+        }
+        
+        /* START: Card 1: Profile (Large) - BACKGROUND IMAGE STYLES */
+        .card-profile {
+            grid-area: profile;
+            
+            /* Core Background Image Properties */
+            background-image: url('bg.jpg');
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            /* Text Contrast and Overlay (Essential for readability) */
+            background-blend-mode: multiply; 
+            background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+            color: var(--color-white); /* Default text color in this card */
+        }
+
+        /* Text color adjustments for the dark background */
+        .card-profile .profile-name {
+            color: var(--color-white); 
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for better contrast */
+        }
+        
+        .card-profile .profile-tagline,
+        .card-profile .profile-details,
+        .card-profile .card-header,
+        .card-profile strong,
+        .card-profile a {
+            color: var(--color-white); 
+        }
+
+        .card-profile .accent-text {
+             /* Brighter accent color for dark background */
+            color: #a8dadc; 
+        }
+
+        .card-profile .social-links a:hover {
+            color: #457b9d; /* Subtle hover effect */
+        }
+        /* END PROFILE CARD STYLES */
+
+
+        /* Card 2: Location (Small) */
+        .location-time {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+        
+        /* Card 5: Hobby (Small) */
+        .card-hobby {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            border-color: var(--color-accent);
+        }
+        
+        .card-hobby .card-header, .card-hobby .card-content, .card-hobby strong {
+            color: var(--color-white);
+        }
+
+        /* Card 6: Playlist (Wide/Bottom) */
+        .spotify-embed {
+            margin-top: 1rem;
+            width: 100%; 
+            min-height: 150px; 
+        }
+        
+        /* Desktop Layout (Grid) */
+        @media (min-width: 768px) {
+            .bento-container {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: auto auto auto auto;
+                grid-template-areas:
+                    "profile profile tech case"
+                    "profile profile location hobby"
+                    "reflection reflection reflection reflection"
+                    "playlist playlist playlist playlist";
+            }
+
+            .card-profile { grid-area: profile; grid-row: 1 / span 2; }
+            .card-tech-stack { grid-area: tech; }
+            .card-case-study { grid-area: case; }
+            .card-location { grid-area: location; }
+            .card-hobby { grid-area: hobby; }
+            .card-reflection { grid-area: reflection; }
+            .card-playlist { grid-area: playlist; }
+            
+        }
+
+        /* Utility Class for Accent Text */
+        .accent-text {
+            color: var(--color-accent);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="bento-container">
+        
+        <div class="bento-card card-profile">
+            <div>
+                <p class="profile-name">SHARUL</p>
+                <p class="profile-tagline accent-text">'Innovating tecnology agro.'</p>
+                <p class="profile-details">
+                    <strong class="accent-text">B.Sc. Sciens Agrotecnology</strong> <br>
+                    Year <span class="accent-text">1</span>
+                </p>
+            </div>
+            <div class="social-links">
+                <p class="card-header">Connect</p>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">GitHub</a>
+                <a href="#" target="_blank">UMT Portal</a>
+            </div>
+        </div>
+        
+        <div class="bento-card card-tech-stack">
+            <p class="card-header">Current Subjects</p>
+            <ul class="subject-list">
+                <li>Food Chemistry</li>
+                <li>Microbiology</li>
+                <li>Data Analysis (Excel)</li>
+                <li>Lab Analysis Techniques</li>
+            </ul>
+        </div>
+
+        <div class="bento-card card-case-study">
+            <p class="card-header">Latest Lab Work</p>
+            <p class="card-content">
+                <strong>Experiment Title:</strong> <span class="accent-text">Starch Gelatinization in Local Kuih</span>
+            </p>
+            <p class="card-content" style="margin-top: 1rem;">
+                <strong>Description:</strong> Analyzing texture profiles of *Kuih Lapis* samples prepared with different starch ratios.
+            </p>
+        </div>
+        
+        <div class="bento-card card-location">
+            <p class="card-content">
+                <strong>UMT</strong>, Kuala Nerus
+            </p>
+            <p class="location-time">
+                12:52 PM
+            </p>
+        </div>
+        
+        <div class="bento-card card-hobby">
+            <p class="card-header">Unwind</p>
+            <p class="card-content">
+                <strong>Activity:</strong> <span class="accent-text">Evening walks at Pantai UMT</span>
+            </p>
+            <p class="card-content">
+                (A must for ocean inspiration!)
+            </p>
+        </div>
+
+        <div class="bento-card card-reflection">
+            <p class="card-header accent-text">Why Food Tech Matters in Malaysia</p>
+            <p class="card-content">
+                Sustainable food security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition. This discipline is key to national resilience.
+            </p>
+        </div>
+        
+        <div class="bento-card card-playlist">
+            <p class="card-header">Study Focus Playlist</p>
+            
+            <div class="spotify-embed">
+                <iframe data-testid="embed-iframe" style="border-radius:12px" 
+                        src="https://open.spotify.com/embed/track/0X2bh8NVQ8svDQIn2AdCbW?utm_source=generator" 
+                        width="100%" 
+                        height="352" 
+                        frameBorder="0" 
+                        allowfullscreen="" 
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                        loading="lazy">
+                </iframe>
+            </div>
+            <p class="card-content" style="margin-top: 0.5rem; font-size: 0.9rem;">
+                Genre: Instrumental and nature soundscapes.
+            </p>
+        </div>
+
+    </div>
+    
+    <script>
+        // Simple script to update the time dynamically
+        function updateTime() {
+            const timeElement = document.querySelector('.location-time');
+            if (timeElement) {
+                const now = new Date();
+                // Format the time as HH:MM AM/PM
+                const timeString = now.toLocaleTimeString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                });
+                timeElement.textContent = timeString;
+            }
+        }
+
+        // Update immediately and then every minute
+        updateTime();
+        setInterval(updateTime, 60000); 
+    </script>
+
+</body>
+</html>
